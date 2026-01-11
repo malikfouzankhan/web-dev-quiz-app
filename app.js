@@ -1,3 +1,6 @@
+import axios from "https://cdn.jsdelivr.net/npm/axios@1.6.8/+esm";
+const baseURL = "http://localhost:5600/api";
+
 const state = {
   currentScreen: "welcome",
   selectedDifficulty: null,
@@ -12,6 +15,11 @@ const state = {
 };
 
 function renderApp() {
+  if(!localStorage.getItem("token"))
+  {
+    alert("Not logged in");
+    window.location.href = "./index.html";
+  }
   let app = document.getElementById("app");
   app.innerHTML = "";
 
@@ -33,7 +41,7 @@ function renderWelcomeScreen(container) {
   const title = document.createElement("h1");
   title.textContent = "Web Dev Quiz";
   title.classList.add("welcome-h1");
-  console.log(title);
+  // console.log(title);
 
   const selectContainer = document.createElement("section");
   selectContainer.classList.add("welcome-section");
@@ -62,17 +70,21 @@ function renderWelcomeScreen(container) {
   startBtn.textContent = "Start Quiz";
   startBtn.classList.add("start-button");
 
-  startBtn.addEventListener("click", () => {
+  startBtn.addEventListener("click", async () => {
+
+    
+    
     state.currentScreen = "quiz";
     state.selectedDifficulty = difficultySelect.value;
     state.selectedCategory = categorySelect.value;
+    let serverData = await axios.post(`${baseURL}/get-set`, {category: state.selectedCategory, difficulty: state.selectedDifficulty});
 
-    state.questions =
-      QUESTION_BANK[state.selectedCategory][state.selectedDifficulty];
+    state.questions = serverData.data;
     state.currentQuestionIndex = 0;
     state.score = 0;
     state.selectedAnswer = null;
 
+    console.log(state.questions);
     renderApp();
   });
 
@@ -80,10 +92,12 @@ function renderWelcomeScreen(container) {
   container.append(title, selectContainer, startBtn);
 }
 
-function renderQuizScreen(container) {
+async function renderQuizScreen(container) {
   const title = document.createElement("h1");
   title.textContent = "Quiz";
   title.classList.add("quiz-h1");
+
+
 
   const q = state.questions[state.currentQuestionIndex];
 

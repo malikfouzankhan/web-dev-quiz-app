@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+.app {
+    min-height: 100dvh;
+    min-width: 100dvw;
+    background-image: radial-gradient(circle at center, rgb(58, 58, 58), black);
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* gap: 1.5rem; */
+    /* position: relative; */
+}
+
+.welcome-h1, .question-element {
+    font-size: 5rem;
+    color: #5F9598;
+    /* position: absolute;
+    top: 5rem; */
+    margin-block: 6rem;
+    margin-inline: auto;
+}
+
+.welcome-section {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.welcome-category, .welcome-difficulty {
+    /* margin-inline: 4rem; */
+    padding: 1rem;
+    font-size: 1.5rem;
+    border: 5px solid #000000ab;
+    border-radius: 1rem;
+    background-color: #c0c4d0;
+    cursor: pointer;
+}
+
+.welcome-category:hover, .welcome-difficulty:hover {
+    border-color: rgb(107, 123, 173);
+}
+
+.category-option {
+    background-color: #c0c4d0;
+}
+
+.start-button {
+    /* position: absolute;
+    top: 0; */
+    /* width: 15%; */
+
+    margin-inline: auto;
+    margin-block: 4rem;
+
+    padding: 1rem;
+    font-size: 1.5rem;
+    background-color: #c0c4d0;
+    border: 5px solid #000000ab;
+    border-radius: 1rem;
+    cursor: pointer;
+
+
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.start-button:hover {
+    border-color: rgb(107, 123, 173);
+    transform: scaleX(1.15) scaleY(1.15);
+    box-shadow: 0 2px 20px 20px #989898;
+}
+
+
+
+
+
+.options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-inline: 2rem;
+    gap: 2rem
+}
+
+.quiz-option, .next-button, .result-retry, .result-home {
+    padding: 1rem;
+    font-size: 2rem;
+
+    background-color: #c0c4d0;
+    border: 5px solid #000000ab;
+    border-radius: 1rem;
+    cursor: pointer;
+
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+
+}
+
+.quiz-option:hover, .next-button:hover, .result-retry:hover, .result-home:hover {
+    border-color: rgb(107, 123, 173);
+    transform: scaleX(1.05) scaleY(1.05);
+}
+
+.clicked {
+    background-color: #47c760;
+    border: 5px solid #003612;
+    border-radius: 1rem;
+}
+
+.next-button {
+    margin-top: 1.5rem;
+    width: 30%;
+    margin-inline: auto;
+}
+
+.result-h1 {
+    font-size: 5rem;
+    color: #5F9598;
+    margin-block: 0.5rem;
+    margin-inline: auto;
+}
+
+.result-score {
+    font-size: 3rem;
+    color: #5F9598;
+    margin-block: 1rem;
+    margin-inline: auto;
+}
+
+.result-congrats {
+    font-size: 2rem;
+    color: green;
+    margin-inline: auto;
+}
+
+.wrong-container {
+    margin-inline: auto;
+    margin-block: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.wrong-answers-heading {
+    color: red;
+    font-size: 2.5rem;
+    margin-inline: auto;
+}
+
+.wrong-answer {
+    color: black;
+    font-size: 1.3rem;
+    padding: 1rem;
+    background-color: #c0c4d0;
+    border: 5px solid #fffdfdab;
+    border-radius: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.result-retry, .result-home {
+    margin-block: 1.5rem;
+    width: 30%;
+    margin-inline: auto;
+}
